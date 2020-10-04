@@ -1,0 +1,30 @@
+{
+  "name": "penni",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "client": "cd client && npm start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"npm run client\" \"npm run server\"",
+    "client:build": "cd client && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nhsufi/Penni.git"
+  },
+  "author": "Naveed Sufi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nhsufi/Penni/issues"
+  },
+  "homepage": "https://github.com/nhsufi/Penni#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.3.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4"
+  }
+}
