@@ -1,7 +1,8 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { ROUTER_ROUTES } from "../routes";
+import { ROUTER_ROUTES, API_ROUTES } from "../routes";
 import { Link } from "react-router-dom";
+import { useApi } from "../hooks";
 
 const Home = () => {
   const {
@@ -12,7 +13,11 @@ const Home = () => {
     isLoading,
   } = useAuth0();
 
-  if (isLoading) {
+  const { loading, error, refresh, data } = useApi(
+    API_ROUTES.v1.health.checkAuth
+  );
+
+  if (isLoading || loading) {
     return <div>Loading...</div>;
   }
 
@@ -32,15 +37,18 @@ const Home = () => {
       </button>
     </>
   ) : (
-    <button
-      onClick={() =>
-        loginWithRedirect({
-          redirectUri: window.location.origin + ROUTER_ROUTES.DASHBOARD,
-        })
-      }
-    >
-      Login
-    </button>
+    <>
+      <button onClick={refresh}>checkAuth</button>
+      <button
+        onClick={() =>
+          loginWithRedirect({
+            redirectUri: window.location.origin + ROUTER_ROUTES.DASHBOARD,
+          })
+        }
+      >
+        Login
+      </button>
+    </>
   );
 };
 

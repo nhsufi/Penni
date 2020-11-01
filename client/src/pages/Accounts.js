@@ -22,7 +22,7 @@ const Accounts = () => {
     </>
   ) : (
     loginWithRedirect({
-      redirectUri: window.location.origin + ROUTER_ROUTES.ACCOUNTS,
+      redirectUri: window.location.origin + ROUTER_ROUTES.DASHBOARD,
     })
   );
 };

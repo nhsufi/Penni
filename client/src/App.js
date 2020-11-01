@@ -8,13 +8,11 @@ import Accounts from "./pages/Accounts";
 
 const App = () => {
   useEffect(() => {
-    const getApiStatus = async () => {
+    (async () => {
       const res = await fetch(API_ROUTES.v1.health.status);
       const { body } = await res.json();
       console.log(body);
-    };
-
-    getApiStatus();
+    })();
   });
 
   return (
