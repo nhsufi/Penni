@@ -1,26 +1,37 @@
-import React, { Component } from "react";
-import "./App.css";
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-class App extends Component {
-  state = {
-    response: {},
-  };
+import ROUTES from "./routes";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import Accounts from "./pages/Accounts";
 
-  componentDidMount() {
-    fetch("/api/v1/say-something").then((res) => {
-      const response = res.json();
-      this.setState({ response });
-    });
-  }
+const App = () => {
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("/api/v1/say-something");
+      const json = await res.json();
+      console.log(json);
+    };
 
-  render() {
-    return (
-      <div className="App">
-        <h1>Hello from the frontend!</h1>
-        <h1>{this.state.response.body}</h1>
-      </div>
-    );
-  }
-}
+    fetchData();
+  });
+
+  return (
+    <Router>
+      <Switch>
+        <Route path={ROUTES.DASHBOARD}>
+          <Dashboard />
+        </Route>
+        <Route path={ROUTES.ACCOUNTS}>
+          <Accounts />
+        </Route>
+        <Route path={ROUTES.HOME}>
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
+  );
+};
 
 export default App;
