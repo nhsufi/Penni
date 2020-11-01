@@ -1,7 +1,13 @@
-const ROUTES = {
+export const ROUTER_ROUTES = {
   HOME: "/",
   DASHBOARD: "/dashboard",
   ACCOUNTS: "/accounts",
 };
 
-export default ROUTES;
+export const API_ROUTES = {
+  v1: {
+    health: {
+      status: "/api/v1/health/status",
+    },
+  },
+};

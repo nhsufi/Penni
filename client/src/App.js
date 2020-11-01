@@ -1,32 +1,32 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import ROUTES from "./routes";
+import { ROUTER_ROUTES, API_ROUTES } from "./routes";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Accounts from "./pages/Accounts";
 
 const App = () => {
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("/api/v1/say-something");
-      const json = await res.json();
-      console.log(json);
+    const getApiStatus = async () => {
+      const res = await fetch(API_ROUTES.v1.health.status);
+      const { body } = await res.json();
+      console.log(body);
     };
 
-    fetchData();
+    getApiStatus();
   });
 
   return (
     <Router>
       <Switch>
-        <Route path={ROUTES.DASHBOARD}>
+        <Route path={ROUTER_ROUTES.DASHBOARD}>
           <Dashboard />
         </Route>
-        <Route path={ROUTES.ACCOUNTS}>
+        <Route path={ROUTER_ROUTES.ACCOUNTS}>
           <Accounts />
         </Route>
-        <Route path={ROUTES.HOME}>
+        <Route path={ROUTER_ROUTES.HOME}>
           <Home />
         </Route>
       </Switch>

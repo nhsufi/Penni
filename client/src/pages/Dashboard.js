@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import ROUTES from "../routes";
+import { ROUTER_ROUTES } from "../routes";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -19,12 +19,15 @@ const Home = () => {
   return isAuthenticated ? (
     <>
       <div>{user.email}</div>
-      <Link to={ROUTES.ACCOUNTS}>
+      <Link to={ROUTER_ROUTES.ACCOUNTS}>
         <button>Accounts</button>
+      </Link>
+      <Link to={ROUTER_ROUTES.HOME}>
+        <button>Home</button>
       </Link>
       <button
         onClick={() =>
-          logout({ returnTo: window.location.origin + ROUTES.HOME })
+          logout({ returnTo: window.location.origin + ROUTER_ROUTES.HOME })
         }
       >
         Logout
@@ -32,7 +35,7 @@ const Home = () => {
     </>
   ) : (
     loginWithRedirect({
-      redirectUri: window.location.origin + ROUTES.DASHBOARD,
+      redirectUri: window.location.origin + ROUTER_ROUTES.DASHBOARD,
     })
   );
 };
