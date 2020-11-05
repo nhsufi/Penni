@@ -2,18 +2,25 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { ROUTER_ROUTES, API_ROUTES } from "./routes";
-import Home from "./pages/Home";
-import Dashboard from "./pages/Dashboard";
-import Accounts from "./pages/Accounts";
+import { Home, Dashboard, Accounts } from "./pages";
+import { useFetch } from "./hooks";
 
 const App = () => {
+  const {
+    error: statusError,
+    loading: statusLoading,
+    data: statusData,
+  } = useFetch(API_ROUTES.v1.health.status);
+
   useEffect(() => {
-    (async () => {
-      const res = await fetch(API_ROUTES.v1.health.status);
-      const { body } = await res.json();
-      console.log(body);
-    })();
-  });
+    if (!statusLoading) {
+      if (statusError) {
+        console.log(statusError);
+      } else {
+        console.log(statusData);
+      }
+    }
+  }, [statusError, statusLoading, statusData]);
 
   return (
     <Router>

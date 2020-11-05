@@ -1,9 +1,16 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from "react-router-dom";
 import { ROUTER_ROUTES } from "../routes";
 
 const Accounts = () => {
-  const { isAuthenticated, loginWithRedirect, logout, isLoading } = useAuth0();
+  const {
+    isAuthenticated,
+    loginWithRedirect,
+    logout,
+    user,
+    isLoading,
+  } = useAuth0();
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -11,7 +18,13 @@ const Accounts = () => {
 
   return isAuthenticated ? (
     <>
-      <div>Accounts</div>
+      <div>Logged in as {user.email}</div>
+      <Link to={ROUTER_ROUTES.HOME}>
+        <button>Home</button>
+      </Link>
+      <Link to={ROUTER_ROUTES.DASHBOARD}>
+        <button>Dashboard</button>
+      </Link>
       <button
         onClick={() =>
           logout({ returnTo: window.location.origin + ROUTER_ROUTES.HOME })
@@ -21,9 +34,18 @@ const Accounts = () => {
       </button>
     </>
   ) : (
-    loginWithRedirect({
-      redirectUri: window.location.origin + ROUTER_ROUTES.DASHBOARD,
-    })
+    <>
+      <div>Logged out</div>
+      <button
+        onClick={() =>
+          loginWithRedirect({
+            redirectUri: window.location.origin + ROUTER_ROUTES.DASHBOARD,
+          })
+        }
+      >
+        Login
+      </button>
+    </>
   );
 };
 

@@ -1,8 +1,7 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { ROUTER_ROUTES, API_ROUTES } from "../routes";
 import { Link } from "react-router-dom";
-import { useApi } from "../hooks";
+import { ROUTER_ROUTES } from "../routes";
 
 const Home = () => {
   const {
@@ -13,20 +12,18 @@ const Home = () => {
     isLoading,
   } = useAuth0();
 
-  const { loading, error, refresh, data } = useApi(
-    API_ROUTES.v1.health.checkAuth
-  );
-
-  if (isLoading || loading) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 
-  //TODO: If user is authenticated, show 'go to app' instead of login button
   return isAuthenticated ? (
     <>
-      <div>{user.email}</div>
+      <div>Logged in as {user.email}</div>
       <Link to={ROUTER_ROUTES.DASHBOARD}>
-        <button>Go To App</button>
+        <button>Dashboard</button>
+      </Link>
+      <Link to={ROUTER_ROUTES.ACCOUNTS}>
+        <button>Accounts</button>
       </Link>
       <button
         onClick={() =>
@@ -38,7 +35,7 @@ const Home = () => {
     </>
   ) : (
     <>
-      <button onClick={refresh}>checkAuth</button>
+      <div>Logged out</div>
       <button
         onClick={() =>
           loginWithRedirect({

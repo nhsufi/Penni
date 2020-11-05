@@ -8,7 +8,7 @@ router.get("/status", (_req, res, _next) => {
   });
 });
 
-router.get("/checkAuth", checkJwt, (_req, res, _next) => {
+router.get("/checkAuth", (_req, res, _next) => {
   res.status(200).json({
     body: "Authenticated",
   });
