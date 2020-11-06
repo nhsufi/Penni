@@ -1,9 +1,9 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const path = require("path");
-const api = require("./controllers");
-const { printRequests, checkJwt } = require("./middlewares");
+import express from "express";
+import bodyParser from "body-parser";
+import cors from "cors";
+import path from "path";
+import api from "./controllers";
+import { printRequests, checkJwt } from "./middlewares";
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -35,7 +35,7 @@ if (
 ) {
   app.use(express.static(path.join(__dirname, "client/build")));
 
-  app.get("*", function (_req, res) {
+  app.get("*", (_req, res) => {
     res.sendFile(path.join(__dirname, "client/build", "index.html"));
   });
 }
