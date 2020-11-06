@@ -2,7 +2,7 @@
   "compilerOptions": {
     "lib": ["es2020"],
     "module": "commonjs",
-    "target": "es2019",
+    "target": "es6",
     "esModuleInterop": true,
     "noImplicitAny": true,
     "outDir": "dist",
@@ -12,5 +12,5 @@
     }
   },
   "include": ["controllers/**/*", "*.*"],
-  "exclude": ["client"]
+  "exclude": ["client", "jest.config.js", "**/*.test.ts"]
 }
