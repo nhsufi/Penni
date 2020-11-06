@@ -1,6 +1,7 @@
-const express = require("express");
+import express from "express";
+import { checkJwt } from "../../middlewares";
+
 const router = express.Router();
-const { checkJwt } = require("../../middlewares");
 
 router.get("/status", (_req, res, _next) => {
   res.status(200).json({
@@ -14,4 +15,4 @@ router.get("/checkAuth", (_req, res, _next) => {
   });
 });
 
-module.exports = router;
+export default router;
