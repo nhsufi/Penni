@@ -9,7 +9,9 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // Print requests middlware
-app.use(printRequests);
+if (process.env.NODE_ENV !== "test") {
+  app.use(printRequests);
+}
 
 // bodyParser middleware
 app.use(bodyParser.json());
@@ -47,4 +49,8 @@ app.get("*", (_req, res) => {
   });
 });
 
-app.listen(port, () => console.log(`BACK_END_SERVICE_PORT: ${port}`));
+const server = app.listen(port, () =>
+  console.log(`BACK_END_SERVICE_PORT: ${port}`)
+);
+
+export default server;
