@@ -1,15 +1,17 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const path = require("path");
-const api = require("./controllers");
-const { printRequests, checkJwt } = require("./middlewares");
+import express from "express";
+import bodyParser from "body-parser";
+import cors from "cors";
+import path from "path";
+import api from "./controllers";
+import { printRequests, checkJwt } from "./middlewares";
 
 const app = express();
 const port = process.env.PORT || 5000;
 
 // Print requests middlware
-app.use(printRequests);
+if (process.env.NODE_ENV !== "test") {
+  app.use(printRequests);
+}
 
 // bodyParser middleware
 app.use(bodyParser.json());
@@ -28,14 +30,14 @@ app.use(checkJwt);
 // Configure app routes
 app.use("/api", api);
 
-// This middleware informs the express application to serve our compiled React files
+// Serve our compiled React files middleware
 if (
   process.env.NODE_ENV === "production" ||
   process.env.NODE_ENV === "staging"
 ) {
   app.use(express.static(path.join(__dirname, "client/build")));
 
-  app.get("*", function (_req, res) {
+  app.get("*", (_req, res) => {
     res.sendFile(path.join(__dirname, "client/build", "index.html"));
   });
 }
@@ -47,4 +49,8 @@ app.get("*", (_req, res) => {
   });
 });
 
-app.listen(port, () => console.log(`BACK_END_SERVICE_PORT: ${port}`));
+const server = app.listen(port, () =>
+  console.log(`BACK_END_SERVICE_PORT: ${port}`)
+);
+
+export default server;

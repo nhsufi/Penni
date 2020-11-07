@@ -1,12 +1,13 @@
-const jwt = require("express-jwt");
-const jwksRsa = require("jwks-rsa");
+import { NextFunction, Request, Response } from "express";
+import jwt from "express-jwt";
+import jwksRsa from "jwks-rsa";
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
 // Authorization
-const checkJwt = jwt({
+export const checkJwt = jwt({
   // Dynamically provide a signing key
   // based on the kid in the header and
   // the signing keys provided by the JWKS endpoint.
@@ -24,9 +25,13 @@ const checkJwt = jwt({
 });
 
 // Print requests
-const printRequests = (req, _res, next) => {
+export const printRequests = (
+  req: Request,
+  _res: Response,
+  next: NextFunction
+) => {
   console.log(`Request_Endpoint: ${req.method} ${req.url}`);
   next();
 };
 
-module.exports = { checkJwt, printRequests };
+export default { checkJwt, printRequests };
