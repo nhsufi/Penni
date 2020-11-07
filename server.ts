@@ -30,7 +30,7 @@ app.use(checkJwt);
 // Configure app routes
 app.use("/api", api);
 
-// This middleware informs the express application to serve our compiled React files
+// Serve our compiled React files middleware
 if (
   process.env.NODE_ENV === "production" ||
   process.env.NODE_ENV === "staging"
