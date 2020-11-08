@@ -6,7 +6,7 @@ import api from "./controllers";
 import { printRequests } from "./middlewares";
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 
 // Print requests middlware
 if (process.env.NODE_ENV !== "test") {
