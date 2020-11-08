@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
-import { ROUTER_ROUTES, API_ROUTES } from "../routes";
-import { useFetch } from "../hooks";
+import { ROUTER_ROUTES } from "../routes";
 
 const Home = () => {
   const {
@@ -12,22 +11,6 @@ const Home = () => {
     user,
     isLoading,
   } = useAuth0();
-
-  const {
-    error: statusError,
-    loading: statusLoading,
-    data: statusData,
-  } = useFetch(API_ROUTES.v1.health.status);
-
-  useEffect(() => {
-    if (!statusLoading) {
-      if (statusError) {
-        console.log(statusError);
-      } else {
-        console.log(statusData);
-      }
-    }
-  }, [statusError, statusLoading, statusData]);
 
   if (isLoading) {
     return <div>Loading...</div>;

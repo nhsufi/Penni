@@ -1,12 +1,17 @@
 import { useEffect, useState, useRef, useMemo } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
+type HookOptions = {
+  skipFirstRun?: boolean;
+  fetchWithAuth?: boolean;
+};
+
 const useFetch = (
-  url,
-  options = {},
-  hookOptions = { skipFirstRun: false, fetchWithAuth: true }
+  url: string,
+  options: RequestInit = {},
+  hookOptions?: HookOptions
 ) => {
-  const _hookOptions = useMemo(
+  const _hookOptions: HookOptions = useMemo(
     () => ({
       skipFirstRun: false,
       fetchWithAuth: true,
@@ -29,6 +34,7 @@ const useFetch = (
         skip.current = false;
         return;
       }
+
       try {
         const { ...fetchOptions } = options;
         let headers = { ...fetchOptions.headers };
@@ -61,7 +67,8 @@ const useFetch = (
         }));
       }
     })();
-  }, [refreshIndex, _hookOptions, getAccessTokenSilently, options, url]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [refreshIndex]);
 
   return {
     ...state,
