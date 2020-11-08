@@ -10,7 +10,7 @@
     "server:build": "tsc",
     "dev": "concurrently --kill-others-on-fail \"npm run client:dev\" \"npm run server:dev\"",
     "start": "npm run dev",
-    "build:production": "npm run client:build && npm run server:build",
+    "build": "npm run client:build && npm run server:build",
     "start:production": "node dist/server.js",
     "test": "npx jest --runInBand --detectOpenHandles --colors --verbose --reporters=default",
     "test:ci": "npx jest --ci --runInBand --silent --colors --coverage",
