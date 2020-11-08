@@ -1,15 +1,15 @@
 module.exports = {
   preset: "ts-jest",
   testEnvironment: "node",
-  coverageThreshold: {
-    global: {
-      statements: 75,
-      branches: 75,
-      functions: 75,
-      lines: 0,
-    },
-  },
-  testPathIgnorePatterns: ["node_modules", "client", "dist"],
+  // coverageThreshold: {
+  //   global: {
+  //     statements: 75,
+  //     branches: 75,
+  //     functions: 75,
+  //     lines: 0,
+  //   },
+  // },
+  testPathIgnorePatterns: ["node_modules", "client", "dist", "coverage"],
   // reporters: [
   //   'default',
   //   [

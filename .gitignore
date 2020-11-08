@@ -1,4 +1,8 @@
-node_modules
+/node_modules
+/dist
+/coverage
 .env
-dist
-coverage
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
