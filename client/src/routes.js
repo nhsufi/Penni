@@ -4,11 +4,13 @@ export const ROUTER_ROUTES = {
   ACCOUNTS: "/accounts",
 };
 
+const v1ApiPrefix = "/api/v1";
+
 export const API_ROUTES = {
   v1: {
-    health: {
-      status: "/api/v1/health/status",
-      checkAuth: "/api/v1/health/checkAuth",
+    status: {
+      status: `${v1ApiPrefix}/status`,
+      checkAuth: `${v1ApiPrefix}/status/checkAuth`,
     },
   },
 };

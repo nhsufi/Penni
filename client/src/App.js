@@ -10,7 +10,7 @@ const App = () => {
     error: statusError,
     loading: statusLoading,
     data: statusData,
-  } = useFetch(API_ROUTES.v1.health.status);
+  } = useFetch(API_ROUTES.v1.status.status, {}, false, false);
 
   useEffect(() => {
     if (!statusLoading) {

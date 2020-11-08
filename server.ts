@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import path from "path";
 import api from "./controllers";
-import { printRequests, checkJwt } from "./middlewares";
+import { printRequests } from "./middlewares";
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -24,17 +24,11 @@ app.use(
 // CORs middleware
 app.use(cors());
 
-// Auth middleware
-app.use(checkJwt);
-
 // Configure app routes
 app.use("/api", api);
 
 // Serve our compiled React files middleware
-if (
-  process.env.NODE_ENV === "production" ||
-  process.env.NODE_ENV === "staging"
-) {
+if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
 
   app.get("*", (_req, res) => {
