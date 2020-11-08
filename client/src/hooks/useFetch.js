@@ -1,14 +1,21 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const useFetch = (
   url,
   options = {},
-  skipFirstRun = false,
-  fetchWithAuth = true
+  hookOptions = { skipFirstRun: false, fetchWithAuth: true }
 ) => {
+  const _hookOptions = useMemo(
+    () => ({
+      skipFirstRun: false,
+      fetchWithAuth: true,
+      ...hookOptions,
+    }),
+    [hookOptions]
+  );
   const { getAccessTokenSilently } = useAuth0();
-  const skip = useRef(skipFirstRun);
+  const skip = useRef(_hookOptions.skipFirstRun);
   const [state, setState] = useState({
     error: null,
     loading: true,
@@ -26,7 +33,7 @@ const useFetch = (
         const { ...fetchOptions } = options;
         let headers = { ...fetchOptions.headers };
 
-        if (fetchWithAuth) {
+        if (_hookOptions.fetchWithAuth) {
           const accessToken = await getAccessTokenSilently({
             audience: process.env.REACT_APP_AUTH_AUDIENCE,
           });
@@ -54,7 +61,7 @@ const useFetch = (
         }));
       }
     })();
-  }, [refreshIndex]);
+  }, [refreshIndex, _hookOptions, getAccessTokenSilently, options, url]);
 
   return {
     ...state,
