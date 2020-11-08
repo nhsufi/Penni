@@ -6,7 +6,7 @@
   "scripts": {
     "client:dev": "cd client && npm start",
     "client:build": "cd client && npm run build",
-    "server:dev": "tsc && concurrently --kill-others-on-fail \"tsc -w\" \"nodemon dist/server.js\"",
+    "server:dev": "NODE_ENV=development tsc && concurrently --kill-others-on-fail \"tsc -w\" \"nodemon dist/server.js\"",
     "server:build": "NODE_ENV=production tsc",
     "install:dev": "npm i && cd client && npm i",
     "install:ci": "npm ci && cd client && npm ci",
@@ -30,23 +30,22 @@
   "homepage": "https://github.com/nhsufi/Penni#readme",
   "dependencies": {
     "@types/cors": "^2.8.8",
+    "@types/jest": "^26.0.15",
     "@types/node": "^14.14.6",
+    "@types/supertest": "^2.0.10",
     "body-parser": "^1.19.0",
     "concurrently": "^5.3.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-jwt": "^6.0.0",
-    "jwks-rsa": "^1.11.0"
-  },
-  "devDependencies": {
-    "@types/jest": "^26.0.15",
-    "@types/supertest": "^2.0.10",
     "jest": "26.6.0",
+    "jwks-rsa": "^1.11.0",
     "nodemon": "^2.0.6",
     "prettier": "2.1.2",
     "supertest": "^6.0.1",
     "ts-jest": "^26.4.3",
     "typescript": "^4.0.5"
-  }
+  },
+  "devDependencies": {}
 }

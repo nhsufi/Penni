@@ -3,6 +3,8 @@
     "lib": ["es2020"],
     "module": "commonjs",
     "target": "es6",
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
     "noImplicitAny": true,
     "outDir": "dist",
@@ -11,6 +13,6 @@
       "*": ["node_modules/*"]
     }
   },
-  "include": ["controllers/**/*", "*.*"],
-  "exclude": ["client", "jest.config.js", "**/*.test.ts"]
+  "include": ["src/**/*"],
+  "exclude": ["**/*.test.ts"]
 }
