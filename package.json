@@ -11,7 +11,7 @@
     "install:dev": "npm i && cd client && npm i",
     "install:ci": "npm ci && cd client && npm ci",
     "dev": "NODE_ENV=development concurrently --kill-others-on-fail \"npm run client:dev\" \"npm run server:dev\"",
-    "build": "NODE_ENV=production npm run install:production && npm run client:build && npm run server:build",
+    "build": "NODE_ENV=production npm run install:ci && npm run client:build && npm run server:build",
     "start:production": "NODE_ENV=production node dist/server.js",
     "test": "npx jest --runInBand --detectOpenHandles --colors --verbose --reporters=default",
     "test:ci": "npx jest --ci --runInBand --silent --colors --coverage",
