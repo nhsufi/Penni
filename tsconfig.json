@@ -13,6 +13,6 @@
       "*": ["node_modules/*"]
     }
   },
-  "include": ["controllers/**/*", "*.*"],
-  "exclude": ["client", "jest.config.js", "**/*.test.ts"]
+  "include": ["src/**/*"],
+  "exclude": ["**/*.test.ts"]
 }
