@@ -15,6 +15,7 @@
     "start:production": "NODE_ENV=production node dist/server.js",
     "test": "npx jest --runInBand --detectOpenHandles --colors --verbose --reporters=default",
     "test:ci": "npx jest --ci --runInBand --silent --colors --coverage",
+    "test:client": "cd client && npm run test -- --watchAll=false",
     "lint": "npx prettier --check .",
     "format": "npx prettier --write ."
   },
