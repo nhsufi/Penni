@@ -1,4 +1,4 @@
-# Penni
+# Penni ![CI/CD](https://github.com/nhsufi/Penni/workflows/CI/CD/badge.svg)
 
 Penni is a budgeting app, but really it's just a playground for me to practice full stack development and CI/CD.
 
