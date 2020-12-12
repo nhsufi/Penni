@@ -2,8 +2,6 @@
 
 Penni is a budgeting app, but really it's just a playground for me to practice full stack development and CI/CD.
 
----
-
 ## Getting started
 
 Follow these steps to run the app locally during development.
@@ -36,8 +34,6 @@ Tests files are suffixed with `.test.ts` and can be run with the following comma
 
 - Client tests: `npm run test:client`
 - Server tests: `npm run test:server`
-
----
 
 ## Docker
 
