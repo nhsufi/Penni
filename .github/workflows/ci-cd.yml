@@ -52,7 +52,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm run install:ci
-      - run: npm run test:client
+      - run: npm run test:client:ci
 
   build:
     needs: [lint, test-server, test-client]
@@ -67,4 +67,5 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - run: npm run install:ci
       - run: npm run build
