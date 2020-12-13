@@ -13,17 +13,24 @@ Follow these steps to run the app locally during development.
 
 ### Running Locally
 
-1. Clone the Git repository with
-   `git clone git@github.com:nhsufi/Penni.git` and navigate to the root folder with
+1. Clone the Git repository
+
+   `git clone git@github.com:nhsufi/Penni.git` 
+   
+   Navigate to the root folder
+   
    `cd Penni`
 
 2. Ensure you have the correct Node version installed and active
+   
    `nvm use`
 
 3. Install client and server dependencies
+
    `npm run install:dev`
 
-4. Run client and server in parallel (logs are outputted to the console for debugging purposes)
+4. Run client and server in parallel
+
    `npm run dev`
 
 5. Navigate to `localhost:3000` in your browser to access the app
@@ -47,9 +54,11 @@ In production, the app runs in a docker container. Follow these steps to replica
 ### Running Locally
 
 1. Build the Docker image
+
    `docker build -t <image-name>:<tag-name>`
 
 2. Run the Docker image in a container
+
    `docker run -d -p <port-number>:8080`
 
 3. Navigate to `localhost:<port-number>` in your browser to access the app
