@@ -2,7 +2,7 @@ FROM node:12.18
 WORKDIR /app
 RUN mkdir client
 COPY package*.json ./
-COPY /client/package*.json ./client
+COPY /client/package*.json ./client/
 RUN npm run install:ci
 COPY . .
 ENV PORT=8080

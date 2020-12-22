@@ -3,3 +3,4 @@
 /coverage
 /client/build
 /client/node_modules
+/client/coverage
