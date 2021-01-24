@@ -1,11 +1,11 @@
 require("dotenv").config();
 module.exports = {
   development: {
-    url: process.env.DB_CONNECTION_STRING,
+    use_env_variable: "DATABASE_URL",
     dialect: "postgres",
   },
   production: {
-    url: process.env.DB_CONNECTION_STRING,
+    use_env_variable: "DATABASE_URL",
     dialect: "postgres",
   },
 };

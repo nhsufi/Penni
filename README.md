@@ -62,3 +62,17 @@ In production, the app runs in a docker container. Follow these steps to replica
    `docker run -d -p <port-number>:8080`
 
 3. Navigate to `localhost:<port-number>` in your browser to access the app
+
+### WIP Steps for DB
+
+1. Build the Docker image
+   `docker-compose up -d postgres`
+
+2. Create DB if one hasn't been created before
+   `npx sequelize db:create --config config`
+
+3. To connect to the local DB via CLI, run the following with the the appropriate variables
+   `psql postgres://root:password@localhost:5432/penni_dev`
+
+4. To generate models run
+   `npx sequelize-cli model:generate --name <table-name> --attributes <attributes>`
