@@ -1,7 +1,8 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
-import { ROUTER_ROUTES } from "../routes";
+import { ROUTER_ROUTES } from "../../routes";
+import TopBar from "./TopBar";
 
 const Home = () => {
   const {
@@ -35,7 +36,7 @@ const Home = () => {
     </>
   ) : (
     <>
-      <div>Logged out</div>
+      <TopBar></TopBar>
       <button
         onClick={() =>
           loginWithRedirect({
