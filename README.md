@@ -15,14 +15,14 @@ Follow these steps to run the app locally during development.
 
 1. Clone the Git repository
 
-   `git clone git@github.com:nhsufi/Penni.git` 
-   
+   `git clone git@github.com:nhsufi/Penni.git`
+
    Navigate to the root folder
-   
+
    `cd Penni`
 
 2. Ensure you have the correct Node version installed and active
-   
+
    `nvm use`
 
 3. Install client and server dependencies

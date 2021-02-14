@@ -6,7 +6,7 @@
   "scripts": {
     "client:dev": "cd client && npm start",
     "client:build": "cd client && npm run build",
-    "server:dev": "tsc && concurrently --kill-others-on-fail \"tsc -w\" \"nodemon dist/server.js\"",
+    "server:dev": "tsc && concurrently --kill-others-on-fail \"tsc -w\" \"NODE_ENV=development nodemon dist/server.js\"",
     "server:build": "tsc",
     "install:dev": "npm i && cd client && npm i",
     "install:ci": "npm ci && cd client && npm ci",
