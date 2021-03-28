@@ -3,8 +3,8 @@ import app from "../../server";
 
 describe("Status", () => {
   afterAll(async (done) => {
-    await app.close();
-    await new Promise((resolve) => setTimeout(() => resolve(), 500));
+    app.close();
+    await new Promise<void>((resolve) => setTimeout(() => resolve(), 500));
     done();
   });
 
