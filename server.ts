@@ -8,7 +8,7 @@ import { printRequests } from "./middlewares";
 const app = express();
 const port = process.env.PORT || 8080;
 
-// Print requests middlware
+// Print requests middleware
 if (process.env.NODE_ENV !== "test") {
   app.use(printRequests);
 }
